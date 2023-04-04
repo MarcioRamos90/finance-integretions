@@ -2,3 +2,6 @@ fastapi
 firebase-admin
 python-telegram-bot
 python-decouple
+pydantic
+
+pytest

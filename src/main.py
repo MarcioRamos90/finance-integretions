@@ -8,7 +8,8 @@ from telegram.ext import (
     ContextTypes,
 )
 
-from data import get_all_finances, new_finance_item
+from data import get_all_finances, new_finance_item, get_list_by_day
+from setup import TELEGRAM_TOKEN
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
@@ -24,6 +25,11 @@ async def unknown(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def getfin(update: Update, context: ContextTypes.DEFAULT_TYPE):
     finances = await get_all_finances()
+    await context.bot.send_message(chat_id=update.effective_chat.id, text=finances)
+
+
+async def getfinbydate(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    finances = await get_list_by_day()
     await context.bot.send_message(chat_id=update.effective_chat.id, text=finances)
 
 
@@ -53,18 +59,18 @@ async def help(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 if __name__ == "__main__":
-    from decouple import config
-
-    TELEGRAM_TOKEN = config("TELEGRAM_TOKEN")
     application = ApplicationBuilder().token(TELEGRAM_TOKEN).build()
 
     getfin_handler = CommandHandler("getfin", getfin)
     newfin_handler = CommandHandler("newfin", newfin)
+    getfinbydate_handler = CommandHandler("gbydate", getfinbydate)
 
     help_handler = CommandHandler("help", help)
     unknown_handler = MessageHandler(filters.COMMAND, unknown)
 
     application.add_handler(getfin_handler)
+    application.add_handler(getfinbydate_handler)
+    
     application.add_handler(newfin_handler)
 
     application.add_handler(help_handler)
