@@ -11,3 +11,8 @@ def extract_arguments(args: tuple[str]):
         else:
             accumulator[-1][1] += " " + i
     return accumulator
+
+
+def extract_value(args: tuple[str]):
+    data = args[0].split()[1:]
+    return data[0]

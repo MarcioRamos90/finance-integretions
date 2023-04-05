@@ -29,7 +29,7 @@ async def getfin(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def getfinbydate(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    finances = await get_list_by_day()
+    finances = await get_list_by_day(update.message.text)
     await context.bot.send_message(chat_id=update.effective_chat.id, text=finances)
 
 
