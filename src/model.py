@@ -4,17 +4,29 @@ from enum import Enum
 
 
 def gen_datetime(
-    day=datetime.today().day, month=datetime.today().month, year=datetime.today().year,
-    hour=0, minute=0, second=0, microsecond=0, first_hour=False
+    day=datetime.today().day,
+    month=datetime.today().month,
+    year=datetime.today().year,
+    hour=0,
+    minute=0,
+    second=0,
+    microsecond=0,
+    first_hour=False,
 ):
     if first_hour:
-        hour=1
-        minute=1
-        second=1
-        microsecond=1
+        hour = 1
+        minute = 1
+        second = 1
+        microsecond = 1
 
     return datetime(
-        day=day, month=month, year=year, hour=hour, minute=minute, second=second, microsecond=microsecond,
+        day=day,
+        month=month,
+        year=year,
+        hour=hour,
+        minute=minute,
+        second=second,
+        microsecond=microsecond,
     )
 
 

@@ -2,3 +2,4 @@
 credentials
 venv
 *.pyc
+.idea

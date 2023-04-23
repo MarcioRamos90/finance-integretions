@@ -1,8 +1,7 @@
-
 def extract_arguments(args: tuple[str]):
     data = args[0].split()[1:]
     accumulator = []
-    
+
     for i in data:
         if i.startswith("-"):
             accumulator.append([i, ""])

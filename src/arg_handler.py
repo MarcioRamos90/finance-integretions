@@ -9,6 +9,7 @@ new_finance_args_map = {
     "-t": "type",
 }
 
+
 def parse_new_finance_arguments(arguments: tuple) -> FinanceInput:
     resp_args = extract_arguments(arguments)
 
@@ -19,6 +20,7 @@ def parse_new_finance_arguments(arguments: tuple) -> FinanceInput:
 
     data = FinanceInput(**data)
     return data
+
 
 def parse_date_arguments(arguments: tuple) -> DateModel:
     value = extract_value(arguments)
